@@ -18,8 +18,8 @@ const LoginForm = function () {
             Well never share your password with anyone else.
           </Form.Text>
         </Form.Group>
-
-        <Link to="/create">Don&apos;t have an account? Sign up here.</Link>
+        <span>Don&apos;t have an account? Sign up</span>
+        <Link to="/create"> here.</Link>
 
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
           <Form.Check type="checkbox" label="Check me out" />
