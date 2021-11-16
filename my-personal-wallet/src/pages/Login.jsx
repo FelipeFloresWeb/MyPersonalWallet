@@ -1,11 +1,15 @@
-/* eslint-disable func-names */
 import React from 'react';
+import { Container, Row } from 'react-bootstrap';
+import LoginForm from './components/LoginForm';
 
 const Login = function () {
   return (
-    <div>
-      <h2>Login</h2>
-    </div>
+    <Container>
+      <Row className="justify-content-md-center">
+        <h2>Login</h2>
+      </Row>
+      <LoginForm />
+    </Container>
   );
 };
 
