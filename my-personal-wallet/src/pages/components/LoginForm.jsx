@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+
 import regex from '../../utils/regex';
+import ApiMock from '../../services/Api';
 
 const LoginForm = function () {
   const [disableButton, setDisableButton] = useState(true);
   const [user, setUser] = useState({ email: '', password: '' });
+  const [redirectUser, setRedirectUser] = useState(false);
 
   useEffect(() => {
     const { email } = user;
@@ -17,8 +21,29 @@ const LoginForm = function () {
     }
   }, [user]);
 
+  const getCurrUser = async () => {
+    const data = { email: user.email, password: user.password };
+    const { status } = await ApiMock.getUser(data);
+    if (status !== 200) {
+      return Swal.fire({
+        title: 'Error!',
+        text: 'Do you want to continue',
+        icon: 'error',
+        confirmButtonText: 'Cool',
+      });
+    }
+    setRedirectUser(true);
+    return Swal.fire({
+      title: 'Sucess!',
+      text: 'Continue in Main Page...',
+      icon: 'success',
+      confirmButtonText: 'Cool',
+    });
+  };
+
   return (
     <Container>
+      {redirectUser ? <Navigate to="/main" /> : ''}
       <Form>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
@@ -39,7 +64,7 @@ const LoginForm = function () {
           <Form.Check type="checkbox" label="Check me out" />
         </Form.Group>
 
-        <Button disabled={disableButton} variant="primary" type="button">
+        <Button onClick={getCurrUser} disabled={disableButton} variant="primary" type="button">
           Submit
         </Button>
       </Form>
