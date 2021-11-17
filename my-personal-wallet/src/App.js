@@ -2,9 +2,9 @@ import React from 'react';
 import {
   BrowserRouter, Routes, Route, Navigate,
 } from 'react-router-dom';
-import Login from './pages/Login';
-import Create from './pages/Create';
-import Main from './pages/Main';
+import Login from './pages/Login/Login';
+import Create from './pages/Create/Create';
+import Main from './pages/Main/Main';
 
 const App = function () {
   return (
