@@ -4,6 +4,7 @@ import {
 } from 'react-router-dom';
 import Login from './pages/Login';
 import Create from './pages/Create';
+import Main from './pages/Main';
 
 const App = function () {
   return (
@@ -12,6 +13,7 @@ const App = function () {
         <Route path="/" element={<Navigate replace to="/login" />} />
         <Route path="/login" element={<Login />} />
         <Route path="/create" element={<Create />} />
+        <Route path="/main" element={<Main />} />
       </Routes>
     </BrowserRouter>
   );
