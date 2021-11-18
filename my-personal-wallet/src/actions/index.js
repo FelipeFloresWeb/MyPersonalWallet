@@ -1,6 +1,7 @@
 import currencyAPI from '../services/currencyApi';
 import mockApi from '../services/mockApi';
 
+export const RESET_STATE = 'RESET_STATE';
 export const USER_CREATE_SUCESS = 'USER_CREATE_SUCESS';
 export const USER_CREATE_ERROR = 'USER_CREATE_ERROR';
 export const USER_LOGIN = 'USER_LOGIN';
@@ -12,6 +13,10 @@ export const ADD_USER_SPENT = 'ADD_USER_SPENT';
 export const ADD_USER_SPENT_ERROR = 'ADD_USER_SPENT_ERROR';
 export const ADD_USER_GAIN_ERROR = 'ADD_USER_GAIN_ERROR';
 export const ADD_USER_GAIN = 'ADD_USER_GAIN';
+
+export const resetState = () => ({
+  type: RESET_STATE,
+});
 
 export const addUserGainError = () => ({
   type: ADD_USER_GAIN_ERROR,

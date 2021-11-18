@@ -1,4 +1,4 @@
-import { LOAD_CURRENCIES, ADD_EXCHANGE_RATES } from '../actions';
+import { LOAD_CURRENCIES, ADD_EXCHANGE_RATES, RESET_STATE } from '../actions';
 
 const INITIAL_STATE = {
   isloading: false,
@@ -7,6 +7,8 @@ const INITIAL_STATE = {
 
 function walletReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
+    case RESET_STATE:
+      return INITIAL_STATE;
     case LOAD_CURRENCIES:
       return { ...state, isloading: true };
     case ADD_EXCHANGE_RATES:

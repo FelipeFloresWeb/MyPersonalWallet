@@ -1,7 +1,7 @@
 import {
   USER_LOGIN, USER_LOGIN_SUCESS, USER_LOGIN_ERROR, USER_CREATE_SUCESS,
   USER_CREATE_ERROR, ADD_USER_SPENT, ADD_USER_SPENT_ERROR, ADD_USER_GAIN_ERROR,
-  ADD_USER_GAIN,
+  ADD_USER_GAIN, RESET_STATE,
 } from '../actions';
 
 const INITIAL_STATE = {
@@ -20,6 +20,8 @@ const INITIAL_STATE = {
 
 function userReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
+    case RESET_STATE:
+      return INITIAL_STATE;
     case ADD_USER_GAIN_ERROR:
       return {
         ...state,
