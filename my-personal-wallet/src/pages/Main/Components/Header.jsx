@@ -4,11 +4,25 @@ import {
   Navbar, Container, Nav, Col, Row,
 } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import Swal from 'sweetalert2';
+
+import { currencyAPIThunk } from '../../../actions';
 
 const Header = function (props) {
   const {
-    name, email, balance, setHandlePages,
+    name, email, balance, setHandlePages, currencyApi,
   } = props;
+
+  const updateValues = async () => {
+    Swal.fire({
+      title: 'Sucess!',
+      text: 'Update Currencies.',
+      icon: 'success',
+      confirmButtonText: 'Cool',
+    });
+    await currencyApi();
+  };
+
   return (
     <Navbar bg="primary" variant="dark">
       <Container>
@@ -25,7 +39,7 @@ const Header = function (props) {
               <Nav.Link onClick={() => setHandlePages('currencies')} href="#currencies">Currencies</Nav.Link>
             </Col>
             <Col>
-              <Nav.Link href="#pricing">Pricing</Nav.Link>
+              <Nav.Link onClick={updateValues} href="#updateValues">Update Values</Nav.Link>
             </Col>
             <Col>
               <Navbar.Brand>{email || 'Loading...'}</Navbar.Brand>
@@ -47,11 +61,16 @@ const mapStateToProps = ({ user: { name, email, balance } }) => ({
   balance,
 });
 
+const mapDispatchToProps = (dispatch) => ({
+  currencyApi: () => dispatch(currencyAPIThunk()),
+});
+
 Header.propTypes = {
   setHandlePages: PropTypes.func,
   email: PropTypes.string,
   name: PropTypes.string,
   balance: PropTypes.func,
+  currencyApi: PropTypes.func,
 }.isRequired;
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
