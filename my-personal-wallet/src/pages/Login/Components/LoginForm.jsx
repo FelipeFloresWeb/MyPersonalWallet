@@ -10,7 +10,7 @@ import { mockAPIThunk, currencyAPIThunk } from '../../../actions';
 
 const LoginForm = function (props) {
   const {
-    userApi, currencyApi, loading, userOk, loginError,
+    userApi, currencyApi, userOk, loginError,
   } = props;
 
   const [disableButton, setDisableButton] = useState(true);
@@ -84,8 +84,7 @@ const mapDispatchToProps = (dispatch) => ({
   currencyApi: () => dispatch(currencyAPIThunk()),
 });
 
-const mapStateToProps = ({ user: { loading, userOk, loginError } }) => ({
-  loading,
+const mapStateToProps = ({ user: { userOk, loginError } }) => ({
   userOk,
   loginError,
 });
@@ -93,7 +92,6 @@ const mapStateToProps = ({ user: { loading, userOk, loginError } }) => ({
 LoginForm.propTypes = {
   userApi: PropTypes.func,
   currencyApi: PropTypes.func,
-  loading: PropTypes.bool,
   userOk: PropTypes.bool,
   loginError: PropTypes.bool,
 }.isRequired;
