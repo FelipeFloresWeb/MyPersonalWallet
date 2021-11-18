@@ -72,8 +72,8 @@ const Currencies = function (props) {
           <br />
           <ListGroup>
             <ListGroup.Item>{`Conversion currency: ${currencie.name}`}</ListGroup.Item>
-            <ListGroup.Item>{`Buy now for: R$ ${currencie.bid}`}</ListGroup.Item>
-            <ListGroup.Item>{`Sell now for: R$ ${currencie.ask}`}</ListGroup.Item>
+            <ListGroup.Item>{`Buy now for: R$ ${currencie.bid}${currencie.code === 'BTC' ? '000' : ''}`}</ListGroup.Item>
+            <ListGroup.Item>{`Sell now for: R$ ${currencie.ask}${currencie.code === 'BTC' ? '000' : ''}`}</ListGroup.Item>
             <ListGroup.Item>
               {`Last update: ${currencie.create_date.split(' ')[0]} Hour: ${currencie.create_date.split(' ')[1]}`}
             </ListGroup.Item>
