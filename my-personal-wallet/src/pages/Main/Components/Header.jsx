@@ -1,17 +1,22 @@
-import React from 'react';
+/* eslint-disable jsx-a11y/label-has-associated-control */
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
-  Navbar, Container, Nav, Col, Row,
+  Navbar, Container, Nav, Col, Row, Button,
 } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import Swal from 'sweetalert2';
+import { Navigate } from 'react-router-dom';
+import logoutIcon from '../../../assets/logoutIcon.png';
 
-import { currencyAPIThunk } from '../../../actions';
+import { currencyAPIThunk, resetState } from '../../../actions';
 
 const Header = function (props) {
   const {
-    name, email, balance, setHandlePages, currencyApi,
+    name, email, balance, setHandlePages, currencyApi, logOutReset,
   } = props;
+
+  const [redirect, setRedirect] = useState(false);
 
   const updateValues = async () => {
     Swal.fire({
@@ -23,10 +28,24 @@ const Header = function (props) {
     await currencyApi();
   };
 
+  const logOut = () => {
+    logOutReset();
+    setRedirect(true);
+  };
+
   return (
     <Navbar bg="primary" variant="dark">
+      {redirect ? <Navigate to="/login" /> : ''}
       <Container>
         <Row>
+          <Col>
+            <Navbar.Brand>
+              <Button onClick={logOut}>
+                <img src={logoutIcon} alt="logout icon" />
+                Logout
+              </Button>
+            </Navbar.Brand>
+          </Col>
           <Col>
             <Navbar.Brand>{`Welcome: ${name || 'Loading...'}`}</Navbar.Brand>
           </Col>
@@ -63,6 +82,7 @@ const mapStateToProps = ({ user: { name, email, balance } }) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   currencyApi: () => dispatch(currencyAPIThunk()),
+  logOutReset: () => dispatch(resetState()),
 });
 
 Header.propTypes = {
@@ -71,6 +91,7 @@ Header.propTypes = {
   name: PropTypes.string,
   balance: PropTypes.func,
   currencyApi: PropTypes.func,
+  logOutReset: PropTypes.func,
 }.isRequired;
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
