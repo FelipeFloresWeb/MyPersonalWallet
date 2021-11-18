@@ -92,7 +92,6 @@ export const mockAPIThunkSpent = (payload) => async (dispatch) => {
 
 // Create User
 export const mockAPIThunkCreate = (payload) => async (dispatch) => {
-  dispatch(userLogin());
   const {
     status,
     user: {
@@ -101,7 +100,8 @@ export const mockAPIThunkCreate = (payload) => async (dispatch) => {
   } = await mockApi.createUser(
     { name: payload.name, email: payload.email, password: payload.password },
   );
-  if (status !== 200) return dispatch(userLoginError());
+
+  if (status !== 201) return dispatch(userLoginError());
 
   return dispatch(userLoginSucess({
     name, email, balance, wallets,
