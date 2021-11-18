@@ -11,7 +11,7 @@ import CreateForm from './Components/CreateForm';
 
 const Create = function (props) {
   const {
-    createApi, createError, createOk, currencyApi,
+    createApi, createError, userOk, currencyApi,
   } = props;
 
   const [disableButton, setDisableButton] = useState(true);
@@ -53,7 +53,7 @@ const Create = function (props) {
 
   return (
     <Container>
-      {createOk ? <Navigate to="/main" /> : ''}
+      {userOk ? <Navigate to="/main" /> : ''}
       <Link to="/login">To Login</Link>
       <h2>Account Create</h2>
       <CreateForm
@@ -71,9 +71,9 @@ const mapDispatchToProps = (dispatch) => ({
   currencyApi: () => dispatch(currencyAPIThunk()),
 });
 
-const mapStateToProps = ({ user: { createError, createOk } }) => ({
+const mapStateToProps = ({ user: { createError, userOk } }) => ({
   createError,
-  createOk,
+  userOk,
 });
 
 Create.propTypes = {
