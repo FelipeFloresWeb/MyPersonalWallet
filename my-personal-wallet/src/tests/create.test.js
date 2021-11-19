@@ -7,6 +7,7 @@ import App from '../App';
 import renderWithProvider from './helpers/renderWithProvider';
 
 describe('Test whether when rendering the Create component...', () => {
+  window.scrollTo = jest.fn();
   test('that inputs are present on the page', () => {
     renderWithProvider(<App />);
 
@@ -99,7 +100,7 @@ describe('Test whether when rendering the Create component...', () => {
     expect(button).not.toBeDisabled();
     userEvent.click(button);
 
-    const alertButton = await waitFor(() => screen.getByRole('button', { name: /lets/i }), { timeout: 1500 });
+    const alertButton = await waitFor(() => screen.getByRole('button', { name: /lets/i }), { timeout: 5000 });
     userEvent.click(alertButton);
 
     const link = screen.getByRole('link', { name: 'Wallet' });
