@@ -10,7 +10,8 @@ const VALID_EMAIL = 'email1@email.com';
 const VALID_PASSWORD = '123456';
 
 describe('Test whether when rendering the App component...', () => {
-  test('the user is redirected to the "/login" route', async () => {
+  window.scrollTo = jest.fn();
+  test('the user is redirected to the "/login" route', () => {
     const { history } = renderWithProvider(<App />);
     const { pathname } = history.location;
 
@@ -86,7 +87,7 @@ describe('Test whether when rendering the App component...', () => {
     userEvent.type(passwordInput, VALID_PASSWORD);
     userEvent.click(button);
 
-    const alertButton = await waitFor(() => screen.getByRole('button', { name: 'Cool' }), { timeout: 2000 });
+    const alertButton = await waitFor(() => screen.getByText('Cool'), { timeout: 2000 });
 
     userEvent.click(alertButton);
 
