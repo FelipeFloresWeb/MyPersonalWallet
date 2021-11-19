@@ -7,7 +7,7 @@ import App from '../App';
 import renderWithProvider from './helpers/renderWithProvider';
 
 describe('Test whether when rendering the Create component...', () => {
-  test('that inputs are present on the page', async () => {
+  test('that inputs are present on the page', () => {
     renderWithProvider(<App />);
 
     const link = screen.getByRole('link', { name: /here/i });
