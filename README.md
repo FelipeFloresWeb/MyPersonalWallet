@@ -1,9 +1,15 @@
-# MyPersonalWallet
+# :heavy_dollar_sign:MyPersonalWallet:heavy_dollar_sign:
+
+## Muito Bem vindo ao repositório My Personal Wallet!!
+
 
 - [Objetivo](#objetivo)
 - [Requisitos](#requisitos)
 - [Funcionalidades](#funcionalidades)
-
+- [Como que esta aplicação funciona](#comoqueestaaplicaçãofunciona)
+- [Como baixar esta aplicação](#comobaixarestaaplicação)
+- [Testes](#testes)
+- [Deploy](#deploy)
 
 ## Objetivo
 
@@ -59,8 +65,8 @@ Para rodar os testes da aplicação execute o seguinte comando:
 :bangbang: Certifique-se de estar dentro da pasta 'my-personal-wallet' :bangbang:
 
 
-
-## Acesse aplicação agora mesmo clicando na imagem abaixo 😄
+## Deploy
+### Acesse aplicação agora mesmo clicando na imagem abaixo 😄
 
 <a href="https://my-personal-wallet.herokuapp.com/" target="_blank">
 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/heroku/heroku-original-wordmark.svg" alt="node" width="100" height="100"/>
