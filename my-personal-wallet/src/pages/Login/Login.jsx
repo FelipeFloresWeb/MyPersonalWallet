@@ -14,7 +14,7 @@ const Login = function () {
       </Container>
       <Container>
         <Row className="justify-content-md-center">
-          <Col md="auto"><h2>Login</h2></Col>
+          <Col md="auto"><h2>My Personal Wallet</h2></Col>
         </Row>
         <LoginForm />
       </Container>
