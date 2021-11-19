@@ -19,6 +19,8 @@ Desenvolver uma aplicação que possua o comportamento similar ao de uma 'blockc
 * Comprar/Vender criptomoedas;
 * Página de Login;
 * Página para criar um novo usuário
+* Api Mockada para tratar de atualizar saldo do usuário
+* Esta aplicação utiliza informações retornadas da API: https://economia.awesomeapi.com.br
 
 ## :bangbang: Importante :bangbang:
 O sistema já possui um usuário com saldo (que retorna da api mockada) para poder acessar as funções de compra e venda da aplicação, para entrar com ele coloque qualquer email(no formato de um e-mail válido ex: 'email@email.com') no campo email, e senha(maior que 5 carateres) no campo password.
@@ -26,6 +28,7 @@ O sistema já possui um usuário com saldo (que retorna da api mockada) para pod
 ## Como a aplicação funciona?
 1. Realize o login ou crie um novo usuário;
 2. Na página principal é possivel ver sua carteira contendo todas as moedas as quais voce já possui (este usuário já vem com 1.2 USD comprados :smile:) clicando em 'Wallet';
+3. Ao clicar em 'Currencies' será renderizado uma lista contendo todos os tipos de moedas disponíveis retornadas da [API](https://economia.awesomeapi.com.br)
 
 ## Autor
 [Felipe Flores](https://www.linkedin.com/in/felipe-flores-trybe/)
