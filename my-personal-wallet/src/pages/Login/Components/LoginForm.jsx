@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { Link, Navigate } from 'react-router-dom';
@@ -7,11 +7,14 @@ import Swal from 'sweetalert2';
 
 import regex from '../../../utils/regex';
 import { mockAPIThunk, currencyAPIThunk } from '../../../actions';
+import { setToLocalStorage, getItemFromLocalStorage } from '../../../utils/localStorage';
 
 const LoginForm = function (props) {
   const {
     userApi, currencyApi, userOk, loginError,
   } = props;
+
+  const emailInput = useRef(null);
 
   const [disableButton, setDisableButton] = useState(true);
   const [user, setUser] = useState({ email: '', password: '' });
@@ -25,6 +28,11 @@ const LoginForm = function (props) {
       setDisableButton(true);
     }
   }, [user]);
+
+  useEffect(() => {
+    emailInput.current.value = getItemFromLocalStorage('email');
+    setUser({ ...user, email: getItemFromLocalStorage('email') });
+  }, []);
 
   const getCurrUser = async () => {
     const data = { email: user.email, password: user.password };
@@ -54,7 +62,7 @@ const LoginForm = function (props) {
       <Form>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
-          <Form.Control onChange={(e) => setUser({ ...user, email: e.target.value })} type="email" placeholder="Enter email" />
+          <Form.Control ref={emailInput} onChange={(e) => setUser({ ...user, email: e.target.value })} type="email" placeholder="Enter email" />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -68,7 +76,7 @@ const LoginForm = function (props) {
         <Link to="/create"> here.</Link>
 
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
+          <Form.Check onClick={() => setToLocalStorage('email', user.email)} type="checkbox" label="Check me out" />
         </Form.Group>
 
         <Button onClick={getCurrUser} disabled={disableButton} variant="primary" type="button">
