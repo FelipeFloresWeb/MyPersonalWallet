@@ -37,7 +37,7 @@ O sistema já possui um usuário com saldo (que retorna da api mockada) para pod
 2. Na página principal é possivel ver sua carteira contendo todas as moedas as quais voce já possui (este usuário já vem com 1.2 USD comprados :smile:) clicando em 'Wallet';
 3. Ao clicar em 'Currencies' será renderizado uma lista contendo todos os tipos de moedas disponíveis retornadas da [API](https://docs.awesomeapi.com.br/api-de-moedas) clique em alguma para selecioná-la;
 4. Notará que algumas informações a respeito dessa moeda serão renderizadas logo abaixo...
-5. Clique em 'Buy' e notará que vai abrir uma janela onde é possivel escolher a quantidade deseja com base em seu saldo.
+5. Clique em 'Buy' para escolher a quantidade deseja com base em seu saldo.
 6. O mesmo ocorre para vender porém com base na quantidade de moedas que voce possui :smile:..
 
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/78596051/142656298-6efe9c0c-3476-4cc0-8ed0-4d9231b29d1b.gif)
@@ -49,7 +49,7 @@ O sistema já possui um usuário com saldo (que retorna da api mockada) para pod
 * `git clone git@github.com:FelipeFloresWeb/MyPersonalWallet.git`
 4. Entre na ṕasta clonada do projeto:
 * `cd MyPersonalWallet`
-5. Instale as dependencias de desenvolvimento do front e back end:
+5. Instale as dependencias de desenvolvimento:
 * `cd my-personal-wallet`
 * `npm install`
 6. Após o término da instalação inicie a aplicação com o seguinte comando:
