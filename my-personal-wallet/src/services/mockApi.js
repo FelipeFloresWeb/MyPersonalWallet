@@ -3,7 +3,7 @@ const getUser = ({ email, password }) => new Promise((resolve, reject) => {
     resolve({
       status: 200,
       user: {
-        name: 'Pedro', email: 'pedro@pedro.com', id: '1', balance: 10000, wallets: { USD: 1.2 },
+        name: 'Pedro', email, id: '1', balance: 10000, wallets: { USD: 1.2 },
       },
     });
   } else {
